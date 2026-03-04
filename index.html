@@ -130,7 +130,7 @@
           font-weight: 600;
       }
 
-      .member-content { flex: 1; }
+      .member-content { flex: 1; overflow: hidden}
       .breadcrumb { font-size: 0.85rem; color: #666; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
 
       .member-grid {
@@ -158,7 +158,7 @@
           cursor: pointer;
       }
       .news-item:hover, .pub-item:hover { background: #f9f9f9; }
-      .news-title, .pub-title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-right: 20px; }
+      .news-title, .pub-title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-right: 10px; }
       .news-date, .pub-date { color: #888; font-family: Arial, sans-serif; font-size: 0.9rem; flex-shrink: 0; }
 
       @media (max-width: 992px) {
@@ -343,13 +343,30 @@
           margin-bottom: 12px;
       }
 
+      /*.project-tag {*/
+      /*    font-size: 0.75rem;*/
+      /*    text-transform: uppercase;*/
+      /*    color: var(--accent-gold);*/
+      /*    font-weight: bold;*/
+      /*    margin-bottom: 8px;*/
+      /*    display: block;*/
+      /*}*/
+
+      /* 修改后的 project-tag 样式 */
       .project-tag {
-          font-size: 0.75rem;
+          font-size: 0.7rem; /* 稍微缩小字体 */
           text-transform: uppercase;
           color: var(--accent-gold);
-          font-weight: bold;
-          margin-bottom: 8px;
+          font-weight: 600; /* 降低粗体程度，避免文字太挤 */
+          line-height: 1.4; /* 增加行高 */
+          letter-spacing: 0.5px; /* 增加字母间距提升可读性 */
           display: block;
+          /* 允许文字换行 */
+          white-space: normal;
+          /* 限制最大高度，超长时显示省略号 */
+          max-height: 60px;
+          overflow: hidden;
+          text-overflow: ellipsis;
       }
 
       .project-org {
@@ -474,7 +491,7 @@
         Pudong, Shanghai, 201210, China<br><br>
         📧 Email: <a href="mailto:yechf@shanghaitech.edu.cn">yechf@shanghaitech.edu.cn</a><br>
         📞 TEL: +86-21-20685366<br>
-        🌐 Web: <a href="http://psit.sist.shanghaitech.edu.cn/" target="_blank">psit.sist.shanghaitech.edu.cn</a>
+<!--        🌐 Web: <a href="http://psit.sist.shanghaitech.edu.cn/" target="_blank">psit.sist.shanghaitech.edu.cn</a>-->
       </div>
     </div>
   </div>
@@ -510,37 +527,37 @@
 <!--    (产学研合作)-->
     <div class="project-grid">
       <div class="project-card">
-        <span class="project-tag">Development</span>
+        <span class="project-tag">Development of Array Eddy Current Sensor</span>
         <div class="project-name">阵列涡流传感器研制</div>
         <div class="project-org">合作单位：国核电站运行服务技术有限公司</div>
       </div>
       <div class="project-card">
-        <span class="project-tag">Medical Imaging</span>
+        <span class="project-tag">Research on Key Component Technologies in Advanced Medical Imaging Equipment</span>
         <div class="project-name">先进医学影像设备中的关键部件技术研究</div>
         <div class="project-org">合作单位：上海联影医疗科技有限公司</div>
       </div>
       <div class="project-card">
-        <span class="project-tag">Medical Imaging Phase II</span>
+        <span class="project-tag">Research on Key Component Technologies in Advanced Medical Imaging Equipment (Phase II)</span>
         <div class="project-name">先进医学影像设备中的关键部件技术研究（第二期）</div>
         <div class="project-org">合作单位：上海联影医疗科技有限公司</div>
       </div>
       <div class="project-card">
-        <span class="project-tag">Software</span>
+        <span class="project-tag">Development of simulation software for eddy current inspection data</span>
         <div class="project-name">涡流检查数据仿真软件开发</div>
         <div class="project-org">合作单位：中广核检测技术有限公司</div>
       </div>
       <div class="project-card">
-        <span class="project-tag">Hardware</span>
+        <span class="project-tag">Research and development of 16 * 2 eddy current array probe multiplexer technology</span>
         <div class="project-name">16*2涡流阵列探头多路器技术研发</div>
         <div class="project-org">合作单位：中广核检测技术有限公司</div>
       </div>
       <div class="project-card">
-        <!--        <span class="project-tag">Magnetic Sensing</span>-->
+        <span class="project-tag">Research on high-precision array imaging electromagnetic detection technology based on magneto resistive sensors</span>
         <div class="project-name">基于磁阻传感器的高精度阵列成像电磁检测技术研究</div>
         <div class="project-org">合作单位：中核武汉核电运行技术股份有限公司</div>
       </div>
       <div class="project-card">
-        <!--        <span class="project-tag">Magnetic Sensing</span>-->
+        <span class="project-tag">Research and development technical services for advanced ultra-thin film thickness electromagnetic measurement and analysis system</span>
         <div class="project-name">先进超薄膜层厚度电磁测量分析系统研发技术服务</div>
         <div class="project-org">合作单位：苏州热工研究院有限公司</div>
       </div>
@@ -550,27 +567,27 @@
 <!--     (科研基金)-->
     <div class="project-grid">
       <div class="project-card" style="border-left: 4px solid var(--accent-gold);">
-        <span class="project-tag">Talent Program</span>
+        <span class="project-tag">Aircraft structural defect detection and quantification based on high-resolution TMR sensor array magnetic field imaging</span>
         <div class="project-name">基于高分辨率TMR传感器阵列磁场成像的飞机结构缺陷检测与量化</div>
         <div class="project-org">所属指南：上海市浦江人才计划</div>
       </div>
       <div class="project-card" style="border-left: 4px solid var(--accent-gold);">
-        <span class="project-tag">Instrument Innovation</span>
+        <span class="project-tag">Closed loop differential optical pump atomic magnetometer for magnetoencephalography measurement</span>
         <div class="project-name">用于脑磁测量的闭环式差分光泵原子磁力仪</div>
         <div class="project-org">所属指南：上海市2020年度"科技创新行动计划"科学仪器领域项目</div>
       </div>
       <div class="project-card" style="border-left: 4px solid var(--accent-gold);">
-        <span class="project-tag">NSFC General</span>
+        <span class="project-tag">Research on High Resolution Magnetic Field Imaging and Precise Detection of Nuclear Fuel Cladding Using Magnetic Source Localization</span>
         <div class="project-name">高分辨率磁场成像磁源定位核燃料包壳精密检测研究</div>
         <div class="project-org">所属指南：国家自然科学基金-面上项目</div>
       </div>
       <div class="project-card" style="border-left: 4px solid var(--accent-gold);">
-        <span class="project-tag">NSFC Joint</span>
+        <span class="project-tag">Research on Array Eddy Current Testing and Electromagnetic Quantitative Characterization Method for Micro scale Heterogeneous Film Layer Structure of Zirconium based Cladding</span>
         <div class="project-name">锆基包壳微米级异质膜层结构叠阵涡流检测及电磁量化表征方法研究</div>
         <div class="project-org">所属指南：国家自然科学基金-联合基金项目</div>
       </div>
       <div class="project-card" style="border-left: 4px solid var(--accent-gold);">
-        <span class="project-tag">Explorer Plan</span>
+        <span class="project-tag">Research on Key Issues in Magnetic Detection of High Sensitivity Atomic Magnetometer Array</span>
         <div class="project-name">高灵敏度原子磁力仪阵列磁检测关键问题研究</div>
         <div class="project-org">所属指南：2025年度基础研究计划"探索者计划"(第一批)</div>
       </div>
@@ -673,6 +690,12 @@
       desc: "Engineer",
       cat: "Staff",
       img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2018/0608/20180608050613414.png"
+    },
+    {
+      name: "Jiahua Liu（刘佳华）",
+      desc: "Engineer",
+      cat: "Staff",
+      img: ""
     },
     {
       name: "Yutong Wei（魏雨童）",
@@ -1490,12 +1513,20 @@
                 <div class="member-desc">${item.desc}</div>
             </div>
         `).join('');
-      } else {
+      } else if(type === 'news'){
         // News 和 Publications 统一的简练列表样式
         container.innerHTML = pagedData.map(item => `
             <a href="${item.link}" class="news-item">
                 <span class="news-title">${item.title}</span>
                 <span class="news-date">${item.date}</span>
+            </a>
+        `).join('');
+      } else {
+        // Publications 统一的简练列表样式
+        container.innerHTML = pagedData.map(item => `
+            <a href="${item.link}" class="pub-item">
+                <span class="pub-title">${item.title}</span>
+                <span class="pub-date">${item.date}</span>
             </a>
         `).join('');
       }
