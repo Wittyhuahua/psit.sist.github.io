@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chaofeng Ye - PSIT Lab | ShanghaiTech</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+  <style>
+      :root {
+          --sidebar-width: 280px;
+          --primary-blue: #003366;
+          --accent-gold: #b89b5e;
+          --bg-light: #f4f7f9;
+          --text-main: #2c3e50;
+          --text-muted: #5a6c7d;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          background-color: var(--bg-light);
+          color: var(--text-main);
+          display: flex;
+          min-height: 100vh;
+      }
+
+      /* --- 左侧导航栏 --- */
+      aside {
+          width: var(--sidebar-width);
+          background-color: var(--primary-blue);
+          color: white;
+          position: fixed;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+          padding: 40px 0;
+          transition: all 0.3s ease;
+      }
+
+      .sidebar-header {
+          padding: 0 30px 30px;
+          border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .sidebar-header h2 {
+          font-size: 1.4rem;
+          letter-spacing: 1px;
+          font-weight: 600;
+      }
+
+      .sidebar-header p {
+          font-size: 0.75rem;
+          opacity: 0.7;
+          margin-top: 5px;
+      }
+
+      nav {
+          margin-top: 30px;
+          flex-grow: 1;
+      }
+
+      nav ul { list-style: none; }
+
+      nav ul li a {
+          display: block;
+          padding: 15px 30px;
+          color: rgba(255,255,255,0.7);
+          text-decoration: none;
+          font-size: 0.95rem;
+          transition: 0.3s;
+          border-left: 4px solid transparent;
+      }
+
+      nav ul li a:hover, nav ul li a.active {
+          color: white;
+          background: rgba(255,255,255,0.05);
+          border-left: 4px solid var(--accent-gold);
+      }
+
+      .sidebar-footer {
+          padding: 20px 30px;
+          font-size: 0.7rem;
+          opacity: 0.5;
+      }
+
+      /* --- 右侧内容区 --- */
+      main {
+          margin-left: var(--sidebar-width);
+          flex: 1;
+          padding: 60px 80px;
+          max-width: 1100px;
+      }
+
+      /* 个人顶栏卡片 */
+      .profile-hero {
+          display: flex;
+          align-items: flex-start;
+          gap: 50px;
+          background: white;
+          padding: 40px;
+          border-radius: 12px;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+          margin-bottom: 50px;
+      }
+
+      .profile-img {
+          width: 200px;
+          height: 260px;
+          object-fit: cover;
+          border-radius: 8px;
+          border: 1px solid #eee;
+      }
+
+      .profile-info h1 {
+          font-family: 'Noto Serif SC', serif;
+          font-size: 2.2rem;
+          margin-bottom: 5px;
+          color: var(--primary-blue);
+      }
+
+      .job-title {
+          font-size: 1.2rem;
+          color: var(--accent-gold);
+          font-weight: 600;
+          margin-bottom: 20px;
+      }
+
+      .contact-info {
+          font-size: 0.9rem;
+          line-height: 1.8;
+          color: var(--text-muted);
+      }
+
+      .contact-info a { color: var(--primary-blue); text-decoration: none; }
+
+      /* 章节通用样式 */
+      section {
+          margin-bottom: 60px;
+          animation: fadeIn 0.8s ease;
+      }
+
+      h3 {
+          font-size: 1.5rem;
+          margin-bottom: 25px;
+          display: flex;
+          align-items: center;
+          color: var(--primary-blue);
+      }
+
+      h3::after {
+          content: "";
+          height: 1px;
+          flex: 1;
+          background: #ddd;
+          margin-left: 20px;
+      }
+
+      .content-card {
+          background: white;
+          padding: 30px;
+          border-radius: 8px;
+          line-height: 1.8;
+          text-align: justify;
+      }
+
+      /* 列表样式 */
+      .styled-list {
+          list-style: none;
+      }
+
+      .styled-list li {
+          padding: 10px 0;
+          border-bottom: 1px solid #f0f0f0;
+          display: flex;
+          align-items: center;
+      }
+
+      .styled-list li::before {
+          content: "→";
+          margin-right: 15px;
+          color: var(--accent-gold);
+          font-weight: bold;
+      }
+
+      /* 新闻高亮 */
+      .news-item {
+          border-left: 4px solid var(--accent-gold);
+          padding: 15px 25px;
+          background: #fffdf7;
+          border-radius: 0 8px 8px 0;
+      }
+
+      .date-badge {
+          display: inline-block;
+          background: var(--primary-blue);
+          color: white;
+          padding: 2px 10px;
+          border-radius: 4px;
+          font-size: 0.8rem;
+          margin-bottom: 10px;
+      }
+
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* 响应式适配 */
+      @media (max-width: 992px) {
+          body { flex-direction: column; }
+          aside {
+              width: 100%;
+              height: auto;
+              position: relative;
+              padding: 20px 0;
+          }
+          main { margin-left: 0; padding: 30px 20px; }
+          .profile-hero { flex-direction: column; align-items: center; text-align: center; }
+          nav ul { display: flex; flex-wrap: wrap; justify-content: center; }
+          nav ul li a { padding: 10px 15px; border-left: none; border-bottom: 2px solid transparent; }
+          nav ul li a:hover { border-bottom: 2px solid var(--accent-gold); }
+      }
+  </style>
+</head>
+<body>
+
+<aside>
+  <div class="sidebar-header">
+    <h2>PSIT Lab</h2>
+    <p>ShanghaiTech University</p>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#about" class="active">About Dr. Ye</a></li>
+      <li><a href="#research">Research Interests</a></li>
+      <li><a href="#news">Latest News</a></li>
+      <li><a href="#openings">Openings</a></li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    &copy; 2026 Chaofeng Ye<br>
+    Intelligent Testing Lab
+  </div>
+</aside>
+
+<main>
+  <div id="about" class="profile-hero">
+    <img src="public/img/img.png" alt="Chaofeng Ye" class="profile-img">
+    <div class="profile-info">
+      <h1>Chaofeng Ye (叶朝锋)</h1>
+      <p class="job-title">Associate Professor</p>
+      <div class="contact-info">
+        <strong>School of Information Science and Technology (SIST)</strong><br>
+        Room 1D-301E, SIST Building, 393 Middle Huaxia Road<br>
+        Pudong, Shanghai, 201210, China<br><br>
+        📧 Email: <a href="mailto:yechf@shanghaitech.edu.cn">yechf@shanghaitech.edu.cn</a><br>
+        📞 TEL: +86-21-20685366<br>
+        🌐 Web: <a href="http://psit.sist.shanghaitech.edu.cn/" target="_blank">psit.sist.shanghaitech.edu.cn</a>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <h3>Biography</h3>
+    <div class="content-card">
+      <p>
+        Dr. Chaofeng Ye graduated from Michigan State University in the United States. In recent years, he has undertaken national and provincial-level projects such as the National Natural Science Foundation General Project and the National Natural Science Foundation Enterprise Innovation and Development Joint Fund Key Project.
+      </p>
+      <p style="margin-top: 15px;">
+        He has been awarded the <strong>Shanghai University Distinguished Professor (Oriental Scholar)</strong>, Pujiang Talent, and the Teaching Achievement Award at Tsinghua University. His entrepreneurial projects have received support from the National Innovation Center.
+      </p>
+    </div>
+  </section>
+
+  <section id="research">
+    <h3>Research Interests</h3>
+    <div class="content-card">
+      <ul class="styled-list">
+        <li><strong>Precision Sensing</strong> (精密传感与智能仪表)</li>
+        <li><strong>Non-destructive Testing</strong> (无损检测技术)</li>
+        <li><strong>Weak Magnetic Measurement</strong> (弱磁信号测量)</li>
+        <li><strong>Signal Processing</strong> (高级信号处理算法)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="news">
+    <h3>Latest News</h3>
+    <div class="news-item">
+      <span class="date-badge">2025-03</span>
+      <p>Our research paper <strong>"Structured IB: Improving Information Bottleneck with Structured Feature Learning"</strong> was officially accepted by <strong>AAAI (CCF-A)</strong>. Congratulations to the team!</p>
+    </div>
+  </section>
+
+  <section id="openings">
+    <h3>Current Openings</h3>
+    <div class="content-card" style="border-top: 3px solid var(--primary-blue);">
+      <p>We are looking for motivated students and researchers to join us in the following positions:</p>
+      <ul class="styled-list">
+        <li>Postdoc Researchers (Long-term)</li>
+        <li>Ph.D. & Master Students</li>
+        <li>Visiting Scholars & Students</li>
+        <li>Research Assistants</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<script>
+  // 简单的导航跳转激活效果
+  const links = document.querySelectorAll('nav ul li a');
+  links.forEach(link => {
+    link.addEventListener('click', function() {
+      links.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
