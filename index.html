@@ -146,6 +146,35 @@
       .member-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
 
 
+      /* --- News & Publications 统一列表样式 --- */
+      .news-breadcrumb, .pub-breadcrumb { font-size: 0.85rem; color: #666; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+      .news-item, .pub-item {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px 5px;
+          border-bottom: 1px dotted #ccc;
+          text-decoration: none;
+          color: #333;
+          cursor: pointer;
+      }
+      .news-item:hover, .pub-item:hover { background: #f9f9f9; }
+      .news-title, .pub-title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-right: 20px; }
+      .news-date, .pub-date { color: #888; font-family: Arial, sans-serif; font-size: 0.9rem; flex-shrink: 0; }
+
+      @media (max-width: 992px) {
+          body { flex-direction: column; }
+          aside { width: 100%; height: auto; position: relative; padding: 20px 0; }
+          main { margin-left: 0; padding: 30px 20px; }
+          .profile-hero { flex-direction: column; align-items: center; text-align: center; }
+          nav ul { display: flex; flex-wrap: wrap; justify-content: center; }
+          nav ul li a { padding: 10px 15px; border-left: none; border-bottom: 2px solid transparent; }
+          nav ul li a:hover { border-bottom: 2px solid var(--accent-gold); }
+          .member-layout { flex-direction: column; }
+          .member-nav { width: 100%; }
+          .member-grid { grid-template-columns: repeat(2, 1fr); }
+          .project-grid { grid-template-columns: 1fr; }
+      }
+
       /* --- 分页条样式 --- */
       .pagination-bar {
           margin-top: 30px;
@@ -349,13 +378,13 @@
       }
 
       /* 新闻样式 */
-      .news-item {
-          border-left: 4px solid var(--accent-gold);
-          padding: 15px 25px;
-          background: #fffdf7;
-          border-radius: 0 8px 8px 0;
-          margin-bottom: 15px;
-      }
+      /*.news-item {*/
+      /*    border-left: 4px solid var(--accent-gold);*/
+      /*    padding: 15px 25px;*/
+      /*    background: #fffdf7;*/
+      /*    border-radius: 0 8px 8px 0;*/
+      /*    margin-bottom: 15px;*/
+      /*}*/
 
       .date-badge {
           display: inline-block;
@@ -574,17 +603,28 @@
   <section id="publications">
     <h3>Publications</h3>
     <div class="content-card">
-      <ul class="styled-list">
-        <li>Journal Papers (期刊论文)</li>
-        <li>Conference Proceedings (会议论文集)</li>
-        <li>Patents (专利)</li>
-      </ul>
+      <div class="member-layout">
+        <div class="member-nav">
+          <div class="member-nav-header"><span style="font-size: 1.2rem;">📚</span> Categories</div>
+          <ul id="pub-category-list">
+            <li class="active" onclick="filterPubs('Journal Papers (期刊论文)')">Journal Papers</li>
+            <li onclick="filterPubs('Conference Proceedings(会议论文集)')">Conference Proceedings</li>
+            <li onclick="filterPubs('Patents (专利)')">Patents</li>
+          </ul>
+        </div>
+        <div class="member-content">
+          <div class="pub-breadcrumb">🏠 Current location: Publications > <span id="current-pub-label">Journal Papers</span></div>
+          <div id="pubs-container"></div>
+          <div id="pubs-pagination" class="pagination-bar"></div>
+        </div>
+      </div>
     </div>
   </section>
+
   <section id="news">
     <h3>News</h3>
     <div class="content-card">
-      <div class="news-breadcrumb"><i class="fa fa-home"></i> Current location: News</div>
+      <div class="news-breadcrumb">🏠 Current location: News</div>
       <div id="news-container"></div>
       <div id="news-pagination" class="pagination-bar"></div>
     </div>
@@ -622,6 +662,22 @@
     { name: "Dr. Ye", desc: "Associate Professor", cat: "Faculty", img: "" }
   ];
 
+
+  // 模拟 News 数据 (15条用于测试分页)
+  const newsData = Array.from({length: 15}, (_, i) => ({
+    title: `PSIT Lab News Item ${i + 1}: Important research breakthrough in magnetic sensing.`,
+    date: `2026-03-${15 - i}`,
+    link: "#"
+  }));
+
+  // 模拟 Publications 数据
+  const publicationsData = [
+    { title: "High-resolution TMR sensor array for NDT", date: "2025", cat: "Journal Papers", link: "#" },
+    { title: "Advanced eddy current testing simulation", date: "2024", cat: "Journal Papers", link: "#" },
+    { title: "Conference paper on atomic magnetometers", date: "2024", cat: "Conference Proceedings", link: "#" },
+    { title: "Patent: Novel Multi-channel Eddy Current Probe", date: "2023", cat: "Patents", link: "#" }
+  ];
+
   let currentFilteredMembers = [];
 
   function filterMembers(category) {
@@ -657,11 +713,18 @@
                 <div class="member-desc">${item.desc}</div>
             </div>
         `).join('');
+      } else {
+        // News 和 Publications 统一的简练列表样式
+        container.innerHTML = pagedData.map(item => `
+            <a href="${item.link}" class="news-item">
+                <span class="news-title">${item.title}</span>
+                <span class="news-date">${item.date}</span>
+            </a>
+        `).join('');
       }
-      renderControls();
+      renderControls(page);
     }
-
-    function renderControls() {
+    function renderControls(currentPage) {
       const nav = document.getElementById(paginationId);
       let html = `<span class="total-count">${totalItems} 条</span>`;
       html += `<button class="page-btn ${currentPage === 1 ? 'disabled' : ''}" onclick="window['jump_${containerId}'](${currentPage - 1})">上一页</button>`;
@@ -678,9 +741,32 @@
     updateDisplay(1);
   }
 
+  // --- 过滤逻辑 ---
+  function filterMembers(category) {
+    document.querySelectorAll('#member-category-list li').forEach(li => {
+      li.classList.remove('active');
+      if(li.innerText === category) li.classList.add('active');
+    });
+    document.getElementById('current-cat-label').innerText = category;
+    const filtered = membersData.filter(m => m.cat === category);
+    renderPaging(filtered, 'members-container', 'members-pagination', 12, 'members');
+  }
+
+  function filterPubs(category) {
+    document.querySelectorAll('#pub-category-list li').forEach(li => {
+      li.classList.remove('active');
+      if(li.innerText === category) li.classList.add('active');
+    });
+    document.getElementById('current-pub-label').innerText = category;
+    const filtered = publicationsData.filter(p => p.cat === category);
+    renderPaging(filtered, 'pubs-container', 'pubs-pagination', 12, 'pubs');
+  }
+
   // 初始加载校友分类
   window.onload = () => {
-    filterMembers('Alumnus');
+    filterMembers('Faculty');
+    filterPubs('Journal Papers');
+    renderPaging(newsData, 'news-container', 'news-pagination', 12, 'news');
   };
 
 </script>
