@@ -506,7 +506,8 @@
   <section id="projects">
     <h3>Projects</h3>
 
-    <h4>Industrial Collaborations (产学研合作)</h4>
+    <h4>Industrial Collaborations</h4>
+<!--    (产学研合作)-->
     <div class="project-grid">
       <div class="project-card">
         <span class="project-tag">Development</span>
@@ -545,7 +546,8 @@
       </div>
     </div>
 
-    <h4>Research Grants & Programs (科研基金)</h4>
+    <h4>Research Grants & Programs</h4>
+<!--     (科研基金)-->
     <div class="project-grid">
       <div class="project-card" style="border-left: 4px solid var(--accent-gold);">
         <span class="project-tag">Talent Program</span>
@@ -607,9 +609,12 @@
         <div class="member-nav">
           <div class="member-nav-header"><span style="font-size: 1.2rem;">📚</span> Categories</div>
           <ul id="pub-category-list">
-            <li class="active" onclick="filterPubs('Journal Papers (期刊论文)')">Journal Papers</li>
-            <li onclick="filterPubs('Conference Proceedings(会议论文集)')">Conference Proceedings</li>
-            <li onclick="filterPubs('Patents (专利)')">Patents</li>
+<!--            (期刊论文)-->
+            <li class="active" onclick="filterPubs('Journal Papers')">Journal Papers</li>
+<!--            (会议论文集)-->
+            <li onclick="filterPubs('Conference Proceedings')">Conference Proceedings</li>
+<!--            (专利)-->
+            <li onclick="filterPubs('Patents')">Patents</li>
           </ul>
         </div>
         <div class="member-content">
@@ -645,37 +650,809 @@
 
 <script>
   // 成员数据示例
+  /**
+   * member type:
+   * Faculty
+   * Staff
+   * PhD Students
+   * Graduate Students
+   * Alumnus
+   *
+   * @type
+   * */
+
   const membersData = [
-    { name: "Lei Peng (彭磊)", desc: "Master, graduated 2023", cat: "Alumnus", img: "" },
-    { name: "Yang Wang (汪洋)", desc: "PhD, graduated 2024", cat: "Alumnus", img: "" },
-    { name: "Yinghao Bai (白英豪)", desc: "PhD Student", cat: "Alumnus", img: "" },
-    { name: "Wenlei Zhao (赵文垒)", desc: "Master Student", cat: "Alumnus", img: "" },
-    { name: "Xinchen Tao (陶昕辰)", desc: "Master Student", cat: "Alumnus", img: "" },
-    { name: "Kai Sun (孙凯)", desc: "Master, graduated 2022", cat: "Alumnus", img: "" },
-    { name: "Na Zhang (张娜)", desc: "PhD Student", cat: "Alumnus", img: "" },
-    { name: "Cai Long (龙偲)", desc: "Master Student", cat: "Alumnus", img: "" },
-    { name: "Zhicheng Zou (邹治成)", desc: "Master Student", cat: "Alumnus", img: "" },
-    { name: "Sample Student 10", desc: "Alumnus Description", cat: "Alumnus", img: "" },
-    { name: "Sample Student 11", desc: "Alumnus Description", cat: "Alumnus", img: "" },
-    { name: "Sample Student 12", desc: "Alumnus Description", cat: "Alumnus", img: "" },
-    { name: "Sample Student 13", desc: "Alumnus Description", cat: "Alumnus", img: "" },
-    { name: "Dr. Ye", desc: "Associate Professor", cat: "Faculty", img: "" }
+    {
+      name: "Chaofeng Ye（叶朝锋）",
+      desc: "Associate Professor",
+      cat: "Faculty",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2019/0919/20190919083603974.png"
+    },
+    {
+      name: "Yu Tao（陶钰）",
+      desc: "Engineer",
+      cat: "Staff",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2018/0608/20180608050613414.png"
+    },
+    {
+      name: "Yutong Wei（魏雨童）",
+      desc: "",
+      cat: "PhD Students",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2018/0625/20180625055405238.png"
+    },
+    {
+      name: "Yaqiong Niu（牛亚琼）",
+      desc: "",
+      cat: "PhD Students",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2020/0911/20200911053622409.png"
+    },
+    {
+      name: "Haoran Dong（董浩然）",
+      desc: "",
+      cat: "Graduate Students",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2021/1013/20211013064844298.png"
+    },
+    {
+      name: "Tong Wu（吴同）",
+      desc: "",
+      cat: "Graduate Students",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2021/1013/20211013052213852.jpg"
+    },
+    {
+      name: "Longsheng Cheng（程隆晟）",
+      desc: "",
+      cat: "Graduate Students",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2021/1013/20211013052505603.jpg"
+    },
+    {
+      name: "Sitong Chen（陈思潼）",
+      desc: "",
+      cat: "Graduate Students",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2021/1013/20211013053110469.png"
+    },
+    {
+      name: "Jiya Chen（陈洁雅）",
+      desc: "",
+      cat: "Graduate Students",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2022/0922/20220922074924828.png"
+    },
+    {
+      name: "Yuntong Liu（刘韫彤）",
+      desc: "",
+      cat: "Graduate Students",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2022/0922/20220922074535566.jpg"
+    },
+    {
+      name: "Yifan Li（李一凡）",
+      desc: "",
+      cat: "Graduate Students",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2022/0922/20220922074441151.jpg"
+    },
+    {
+      name: "Jingyi Wang（王婧怡）",
+      desc: "",
+      cat: "Graduate Students",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2023/0809/20230809022857829.jpg"
+    },
+    {
+      name: "Xingshen Hou（侯省身）",
+      desc: "",
+      cat: "Graduate Students",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2023/0809/20230809103036909.jpg"
+    },
+    {
+      name: "Liuxin Ge（葛柳芯）",
+      desc: "",
+      cat: "Graduate Students",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2023/0809/20230809102948417.jpg"
+    },
+
+    {
+      name: "Lei Peng (彭磊)",
+      desc: "Master, graduated in 2021",
+      cat: "Alumnus",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2018/0608/20180608041953683.png"
+    },
+    {
+      name: "Yang Wang (汪洋)",
+      desc: "Phd, graduated in 2022",
+      cat: "Alumnus",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2018/0625/20180625054950232.png"
+    },
+    {
+      name: "Yinghao Bai (白英豪)",
+      desc: "Phd, graduated in 2022",
+      cat: "Alumnus",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2018/0608/20180608041923234.png"
+    },
+    {
+      name: "Wenlei Zhao (赵文垒)",
+      desc: "Master, graduated in 2022",
+      cat: "Alumnus",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2019/0918/20190918110433545.png"
+    },
+    {
+      name: "Xinchen Tao (陶昕辰)",
+      desc: "Master, graduated in 2022",
+      cat: "Alumnus",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2019/0918/20190918110312394.png"
+    },
+    {
+      name: "Kai Sun (孙凯)",
+      desc: "Master, graduated in 2022",
+      cat: "Alumnus",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2019/0918/20190918110121314.jpg"
+    },
+    {
+      name: "Na Zhang (张娜)",
+      desc: "Phd, graduated in 2023",
+      cat: "Alumnus",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2019/0918/20190918105821821.png"
+    },
+    {
+      name: "Cai Long (龙偲)",
+      desc: "Master, graduated in 2023",
+      cat: "Alumnus",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2019/0918/20190918105821821.png"
+    },
+    {
+      name: "Zhicheng Zou (邹治成)",
+      desc: "Master, graduated in 2023",
+      cat: "Alumnus",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2020/0911/20200911054135625.jpg"
+    },
+    {
+      name: "Cheng Li（李诚）",
+      desc: "Master, graduated in 2023",
+      cat: "Alumnus",
+      img: "https://psit.sist.shanghaitech.edu.cn/uploadfile/2020/0911/20200911054229586.jpg"
+    },
   ];
 
 
-  // 模拟 News 数据 (15条用于测试分页)
-  const newsData = Array.from({length: 15}, (_, i) => ({
-    title: `PSIT Lab News Item ${i + 1}: Important research breakthrough in magnetic sensing.`,
-    date: `2026-03-${15 - i}`,
-    link: "#"
-  }));
+  // News 数据 (15条用于测试分页)
+  // const newsData = Array.from({ length: 15 }, (_, i) => ({
+  //   title: `PSIT Lab News Item ${i + 1}: Important research breakthrough in magnetic sensing.`,
+  //   date: `2026-03-${15 - i}`,
+  //   link: "#"
+  // }));
 
-  // 模拟 Publications 数据
+  const newsData = [
+    {
+      title: "Yaqiong Niu and Chaofeng Ye published an article titled “In situ triaxial magnetic field compensation for the spin-exchange-relaxation-free optically pumped magnetometer” on IEEE Sensors Journal",
+      date: "2023-08-09",
+      link: "http://10.15.21.149/html/2023/news_0809/181.html"
+    },
+    {
+      title: "Haoran Dong, Pan Qi, Jie Han, Na Zhang, Cai Long, Shusheng Liao and Chaofeng Ye published an article titled “High-resolution Magnetic Imaging Probe with Staggered Sensor Arrays for Small Defects Inspection” on IEEE Sensors Journal",
+      date: "2023-07-11",
+      link: "http://10.15.21.149/html/2023/news_0711/178.html"
+    },
+    {
+      title: "Na Zhang, Haoran Dong and Chaofeng Ye published an article titled “Synchronous Imaging and Multimodal Fusion of Optical and Electromagnetic Measurements for Overlapping Defects Inspection” on IEEE Transactions on Industrial informatics",
+      date: "2023-07-11",
+      link: "http://10.15.21.149/html/2023/news_0711/177.html"
+    },
+    {
+      title: "YuTong Wei, et al., published an article titled “Nested Magnetic Field Compensation with Regulated Coefficients for Bio-magnetic Field Measurement” on IEEE Transactions on Instrumentation and Measurement",
+      date: "2023-02-15",
+      link: "http://10.15.21.149/html/2023/news_0215/175.html"
+    },
+    {
+      title: "PSIT obtains a grant of National Natural Science Foundation of China. Congratulations!",
+      date: "2022-10-09",
+      link: "http://10.15.21.149/html/2022/news_1009/174.html"
+    },
+    {
+      title: "Jingyi Wang made an academic report at the 25th International Workshop on electromagnetic nondestructive evaluation in June 2022.",
+      date: "2022-06-24",
+      link: "http://10.15.21.149/html/2022/news_0624/166.html"
+    },
+    {
+      title: "Kai Sun, Pan Qi, Xinchen Tao, Wenlei Zhao, and Chaofeng Ye published an article titled “Vector Magnetic Field Imaging with High-resolution TMR Sensor Arrays for Metal Structure Inspection” on IEEE Sensors Journal in June 2022. ",
+      date: "2022-06-24",
+      link: "http://10.15.21.149/html/2022/news_0624/165.html"
+    },
+    {
+      title: "Congratulations to Wenlei Zhao、Xinchen Tao and Kai Sun for successfully completing their Master defense！",
+      date: "2022-06-24",
+      link: "http://10.15.21.149/html/2022/news_0624/168.html"
+    },
+    {
+      title: "Congratulations to Yang Wang and Yinghao Bai for successfully completing their Ph.D. defense！",
+      date: "2022-06-24",
+      link: "http://10.15.21.149/html/2022/news_0624/167.html"
+    },
+    {
+      title: "Yaqiong Niu  made an academic report at the 2022 IEEE International Microwave Biomedical Conference in May 2022.",
+      date: "2022-06-24",
+      link: "http://10.15.21.149/html/2022/news_0624/169.html"
+    },
+    {
+      title: "YuTong Wei, et al., published an article titled “Electrical Compensation for Magnetization Distortion of Magnetic Fluxgate Current Sensor” on IEEE Transactions on Instrumentation and Measurement",
+      date: "2022-02-14",
+      link: "http://10.15.21.149/html/2022/news_0214/160.html"
+    },
+    {
+      title: "Na Zhang, et al., published an article titled “Flexible Probe with Array Tunneling Magnetoresistance Sensors for Curved Structure Inspection” on IEEE Transactions on Instrumentation and Measurement",
+      date: "2022-02-14",
+      link: "http://10.15.21.149/html/2022/news_0214/159.html"
+    }
+    // 2
+    ,{
+      title: "Kai Sun, et al., published an article titled “Numerical Calculation of Frequency Characteristic of Induction Coils” on the 2021 Far East Forum on Nondestructive Evaluation/Testing",
+      date: "2022-02-14",
+      link: "http://10.15.21.149/html/2022/news_0214/161.html"
+    },
+    {
+      title: "Yang Wang, et al., published an article titled “Inspection of defect under thick Insulation based on magnetic imaging with TMR array sensors” on IEEE TRANSACTIONS ON MAGNETICS",
+      date: "2021-12-24",
+      link: "http://10.15.21.149/html/2021/news_1224/155.html"
+    },
+    {
+      title: "Yinghao Bai, et al., published an article titled “Fusion Images of Versatile Array Sensors for Multi-Object Detection” on IEEE Transactions on Instrumentation and Measurement",
+      date: "2021-10-28",
+      link: "http://10.15.21.149/html/2021/news_1028/151.html"
+    },
+    {
+      title: "Yang Wang,Yaqiong Niu, et al., published an article titled “Optically Pumped Magnetometer with Dynamic Common Mode Magnetic Field Compensation” on Sensors and Actuators: A. Physical",
+      date: "2021-10-22",
+      link: "http://10.15.21.149/html/2021/news_1022/149.html"
+    },
+    {
+      title: "Na Zhang, et al.,published “Flexible ECT Probe with Front-end Differential Setting for Inspection of Curved CFRP Structures” on Composites Part B&nbsp;in October, 2021",
+      date: "2021-10-13",
+      link: "http://10.15.21.149/html/2021/news_1013/146.html"
+    },
+    {
+      title: "Yang Wang, et al., published an article titled “Swept-Frequency Eddy Current Excitation for TMR Array Sensor and Pulse-Compression: feasibility study and quantitative comparison of time and frequency domains processing” on Measurement",
+      date: "2021-10-13",
+      link: "http://10.15.21.149/html/2021/news_1013/139.html"
+    },
+    {
+      title: "One day trip to Shanghai Ocean Aquarium！",
+      date: "2021-09-25",
+      link: "http://10.15.21.149/html/2021/news_0925/141.html"
+    },
+    {
+      title: "Xinchen Tao, et al., published an article titled “Inspection of Defects in Weld Using Differential Array ECT Probe and Deep Learning Algorithm” on IEEE Transactions on Instrumentation and Measurement",
+      date: "2021-08-03",
+      link: "http://10.15.21.149/html/2021/news_0803/137.html"
+    },
+    {
+      title: "Eddy current simulation software project was successfully completed and accepted",
+      date: "2021-07-22",
+      link: "http://10.15.21.149/html/2021/news_0722/148.html"
+    },
+    {
+      title: "Lei Peng, et al., published a conference paper titled “Inspection of the undulation structure with an in-plane differential flexible array probe” on the 2021 IEEE INTERNATIONAL WORKSHOP ON Metrology for AeroSpace, Naples, Italy",
+      date: "2021-06-07",
+      link: "http://10.15.21.149/html/2021/news_0607/134.html"
+    },
+    {
+      title: "Na Zhang, et al., published a conference paper titled “Flexible PCB with Differential Array Coils for Irregular Shape Inspection” on the 30th International Symposium on Industrial Electronics, Kyoto, Japan",
+      date: "2021-06-07",
+      link: "http://10.15.21.149/html/2021/news_0607/133.html"
+    },
+    {
+      title: "One day trip to Shanghai Chen Shan Botanical Garden!",
+      date: "2021-05-11",
+      link: "http://10.15.21.149/html/2021/news_0511/132.html"
+    },
+    // 3
+    {
+      title: "A great home party day！",
+      date: "2021-01-22",
+      link: "http://10.15.21.149/html/2021/news_0122/131.html"
+    },
+    {
+      title: "PSIT Lab visited Shanghai United Imaging Healthcare Co., Ltd on Jan 15th,2021.",
+      date: "2021-01-18",
+      link: "http://10.15.21.149/html/2021/news_0118/130.html"
+    },
+    {
+      title: "Yinghao Bai, et al., published an article titled “Magnetic Imaging of Sludge Outside Steam Generator Tube with Array Magnetoresistance Sensors” on IEEE Sensors Journal",
+      date: "2020-12-31",
+      link: "http://10.15.21.149/html/2020/news_1231/128.html"
+    },
+    {
+      title: "Chaofeng Ye, Na Zhang, Lei Peng and Yu Tao published “Flexible Array Probe with In-plane Differential Multi-Channels for Inspection of Micro-defects on Curved Surface” on IEEE Transactions on Industrial Electronics",
+      date: "2020-12-31",
+      link: "http://10.15.21.149/html/2020/news_1231/126.html"
+    },
+    {
+      title: "One day trip to Pujiang Country Park!",
+      date: "2020-09-14",
+      link: "http://10.15.21.149/html/2020/news_0914/123.html"
+    },
+    {
+      title: "Lei Peng et al., published journal article in IEEE Transaction on Instrument and Measurement with the title “Fastener Tilt Assessment Based on Magnetic Field Image Obtained with Array Tunnel Magnetoresistance Sensors” ",
+      date: "2020-09-14",
+      link: "http://10.15.21.149/html/2020/news_0914/122.html"
+    },
+    {
+      title: "Meiling Wang, Xinchen Tao et al., published “Imaging of Magnetic Nanoparticles Using Small TMR Sensor with An Excitation-Compensation Scheme” on IEEE Sensors Journal ",
+      date: "2020-05-19",
+      link: "http://10.15.21.149/html/2020/news_0519/109.html"
+    },
+    {
+      title: "Yang Wang published “Frequency Domain Analysis of Magnetic Field Images Obtained Using TMR Array Sensors for Subsurface Defect Detection and Quantification” on NDT&E",
+      date: "2020-05-19",
+      link: "http://10.15.21.149/html/2020/news_0519/108.html"
+    },
+    {
+      title: "Na Zhang published “Eddy Current Probe with Three-Phase Excitation and Integrated Array TMR Sensors” on IEEE Transactions on Industrial Electronics",
+      date: "2020-05-18",
+      link: "http://10.15.21.149/html/2020/news_0518/107.html"
+    },
+    {
+      title: "Yu Tao, Lei Peng published “Eddy Current Probe with Integrated Tunnel Magnetoresistance Array Sensors for Tube Inspection” on IEEE Transactions on Magnetics",
+      date: "2020-05-18",
+      link: "http://10.15.21.149/html/2020/news_0518/106.html"
+    },
+    {
+      title: "Professor Toshiyuki TAKAGI and Professor Tetsuya UCHIMOTO visited PSIT on Oct.29th, 2019.",
+      date: "2019-10-29",
+      link: "http://10.15.21.149/html/2019/news_1029/104.html"
+    },
+    {
+      title: "Yang Wang，et al., published “Synthetic Magnetic Field Imaging with Triangle Excitation Coil for Inspection of Any Orientation Defect” on IEEE Transactions on Instrumentation and Measurement on March 29th,2019.",
+      date: "2019-04-02",
+      link: "http://10.15.21.149/html/2019/news_0402/93.html"
+    },
+    // 4
+    {
+      title: "One day trip to Dongping National Forest Park.",
+      date: "2019-10-21",
+      link: "http://10.15.21.149/html/2019/news_1021/103.html"
+    },
+    {
+      title: "Professor Satish Udpa and Professor Lalita Udpa visited PSIT on Sep.15th, 2019. ",
+      date: "2019-09-17",
+      link: "http://10.15.21.149/html/2019/news_0917/97.html"
+    },
+    {
+      title: "Prof. Chaofeng Ye, Yu Tao and Lei Peng, Yang Wang attended the ENDE2019 on Sep.11th，2019. ",
+      date: "2019-09-14",
+      link: "http://10.15.21.149/html/2019/news_0914/96.html"
+    },
+    {
+      title: "Professor Banu Onaral visited PSIT on Sep.11th, 2019.",
+      date: "2019-09-11",
+      link: "http://10.15.21.149/html/2019/news_0911/102.html"
+    },
+    {
+      title: "Meiling Wang, et al., published “Magnetocardiography Measurements with a High Sensitivity Tunnel Magnetoresistance Sensor” on IEEE Sensors Journal Special Session on IEEE Sensor &Nano 2019.",
+      date: "2019-07-04",
+      link: "http://10.15.21.149/html/2019/news_0704/94.html"
+    },
+    {
+      title: "Meiling Wang, et al., published “Measurement of Triaxial Magnetocardiography Using High Sensitivity Tunnel Magnetoresistance Sensor” on IEEE Sensors Journal. ",
+      date: "2019-07-04",
+      link: "http://10.15.21.149/html/2019/news_0704/95.html"
+    },
+    {
+      title: "Prof. Chaofeng Ye, Meiling Wang Yu Tao and Yinghao Bai, Na Zhang attended the FENDT2019 on June 24th 2019",
+      date: "2019-07-03",
+      link: "http://10.15.21.149/html/2019/news_0703/90.html"
+    },
+    {
+      title: "Na Zhang successfully passed doctoral entrance examination.",
+      date: "2019-04-20",
+      link: "http://10.15.21.149/html/2019/news_0420/91.html"
+    },
+    {
+      title: "Na Zhang published “Novel Array Eddy Current Sensor With Three-Phase Excitation” on IEEE Sensors Journal ",
+      date: "2019-04-10",
+      link: "http://10.15.21.149/html/2019/news_0410/80.html"
+    },
+    {
+      title: "One day trip to Happy Valley!",
+      date: "2018-10-31",
+      link: "http://10.15.21.149/html/2018/news_1031/78.html"
+    },
+    {
+      title: "Prof. Chaofeng Ye attended the ENDE2018 and presented a paper on Sep.9th,2018.",
+      date: "2018-10-31",
+      link: "http://10.15.21.149/html/2018/news_1031/79.html"
+    },
+    {
+      title: "Prof. Chaofeng Ye and Meiling Wang attended the First Shanghai Forum on the Innovative Technology of Seafloor Observatory Network on Oct.12th,2018.",
+      date: "2018-10-25",
+      link: "http://10.15.21.149/html/2018/news_1025/77.html"
+    },
+    // 5
+    {
+      title: "Yang Wang published “High-density Large-scale TMR Sensor Array for Magnetic Field Imaging” on IEEE Transactions on Instrumentation and Measurement on Sep.10th,2018.",
+      date: "2018-10-24",
+      link: "http://10.15.21.149/html/2018/news_1024/76.html"
+    },
+    {
+      title: "PSIT Lab visited CGN Inspection Technology Co., Ltd on Jan.23rd,2018.",
+      date: "2018-06-08",
+      link: "http://10.15.21.149/html/2018/news_0608/6.html"
+    },
+    {
+      title: "Prof. Xiangyan KONG and Prof. Haosheng Luo visited PSIT Lab on Mar.30th,2018.",
+      date: "2018-06-08",
+      link: "http://10.15.21.149/html/2018/news_0608/4.html"
+    },
+    {
+      title: "Yinghao Bai and Yang Wang successfully passed doctoral entrance examination.",
+      date: "2018-06-08",
+      link: "http://10.15.21.149/html/2018/news_0608/3.html"
+    },
+    {
+      title: "PSIT Lab visited Shanghai United Imaging Healthcare Co., Ltd on May 9th,2018.",
+      date: "2018-06-08",
+      link: "http://10.15.21.149/html/2018/news_0608/2.html"
+    },
+    {
+      title: "Ph.D Ji-qiu Joe Wang from Ruijin Hospital visited PSIT Lab on May 15th,2018.",
+      date: "2018-06-08",
+      link: "http://10.15.21.149/html/2018/news_0608/1.html"
+    },
+    {
+      title: "Assistant Professor Qin Lei from Arizona State University visited PSIT on Dec.4th，2017.",
+      date: "2018-06-08",
+      link: "http://10.15.21.149/html/2018/news_0608/7.html"
+    },
+
+
+
+  ];
+
+  //  Publications 数据
   const publicationsData = [
-    { title: "High-resolution TMR sensor array for NDT", date: "2025", cat: "Journal Papers", link: "#" },
-    { title: "Advanced eddy current testing simulation", date: "2024", cat: "Journal Papers", link: "#" },
-    { title: "Conference paper on atomic magnetometers", date: "2024", cat: "Conference Proceedings", link: "#" },
-    { title: "Patent: Novel Multi-channel Eddy Current Probe", date: "2023", cat: "Patents", link: "#" }
+
+    // Journal Papers
+    // { title: "High-resolution TMR sensor array for NDT", date: "2025", cat: "Journal Papers", link: "#" },
+    {
+      title: "In situ triaxial magnetic field compensation for the spin-exchange-relaxation-free optically pumped magnetometer",
+      date: "2023-08-09",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2023/journal papers_0809/182.html"
+    },
+    {
+      title: "High-resolution Magnetic Imaging Probe with Staggered Sensor Arrays for Small Defects Inspection",
+      date: "2023-07-11",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2023/journal papers_0711/180.html"
+    },
+    {
+      title: "Synchronous Imaging and Multimodal Fusion of Optical and Electromagnetic Measurements for Overlapping Defects Inspection",
+      date: "2023-07-11",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2023/journal papers_0711/179.html"
+    },
+    {
+      title: "Nested Magnetic Field Compensation with Regulated Coefficients for Bio-magnetic Field Measurement",
+      date: "2023-02-15",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2023/journal papers_0215/176.html"
+    },
+    {
+      title: "Vector Magnetic Field Imaging with High-resolution TMR Sensor Arrays for Metal Structure Inspection",
+      date: "2022-06-24",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2022/journal papers_0624/170.html"
+    },
+    {
+      title: "Electrical Compensation for Magnetization Distortion of Magnetic Fluxgate Current Sensor",
+      date: "2022-02-14",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2022/journal papers_0214/162.html"
+    },
+    {
+      title: "Flexible Probe with Array Tunneling Magnetoresistance Sensors for Curved Structure Inspection",
+      date: "2022-02-14",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2022/journal papers_0214/163.html"
+    },
+    {
+      title: "Inspection of defect under thick Insulation based on magnetic imaging with TMR array sensors",
+      date: "2021-12-24",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2021/journal papers_1224/156.html"
+    },
+    {
+      title: "Fusion Images of Versatile Array Sensors for Multi-Object Detection",
+      date: "2021-10-28",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2021/journal papers_1028/152.html"
+    },
+    {
+      title: "Optically Pumped Magnetometer with Dynamic Common Mode Magnetic Field Compensation",
+      date: "2021-10-22",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2021/journal papers_1022/150.html"
+    },
+    {
+      title: "Flexible ECT Probe with Front-end Differential Setting for Inspection of Curved CFRP Structures",
+      date: "2021-10-13",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2021/journal papers_1013/147.html"
+    },
+    {
+      title: "Swept-Frequency Eddy Current Excitation for TMR Array Sensor and Pulse-Compression: feasibility study and quantitative comparison of time and frequency domains processing",
+      date: "2021-10-13",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2021/journal papers_1013/140.html"
+    },
+    {
+      title: "Inspection of Defects in Weld Using Differential Array ECT Probe and Deep Learning Algorithm",
+      date: "2021-08-03",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2021/journal papers_0803/138.html"
+    },
+    {
+      title: "Magnetic Imaging of Sludge Outside Steam Generator Tube with Array Magnetoresistance Sensors",
+      date: "2020-12-31",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2020/journal papers_1231/129.html"
+    },
+    {
+      title: "Flexible Array Probe with In-plane Differential Multi-Channels for Inspection of Micro-defects on Curved Surface",
+      date: "2020-12-31",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2020/journal papers_1231/127.html"
+    },
+    {
+      title: "Fastener Tilt Assessment Based on Magnetic Field Image Obtained with Array Tunnel Magnetoresistance Sensors",
+      date: "2020-09-14",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2020/journal papers_0914/124.html"
+    },
+    {
+      title: "Imaging of Magnetic Nanoparticles Using Small TMR Sensor with An Excitation-Compensation Scheme",
+      date: "2020-05-19",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2020/journal papers_0519/115.html"
+    },
+    {
+      title: "Frequency Domain Analysis of Magnetic Field Images Obtained Using TMR Array Sensors for Subsurface Defect Detection and Quantification",
+      date: "2020-05-19",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2020/journal papers_0519/114.html"
+    },
+    {
+      title: "Eddy Current Probe with Three-Phase Excitation and Integrated Array TMR Sensors",
+      date: "2020-05-19",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2020/journal papers_0519/113.html"
+    },
+    {
+      title: "Eddy Current Probe With Integrated Tunnel Magnetoresistance Array Sensors for Tube Inspection",
+      date: "2020-05-19",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2020/journal papers_0519/112.html"
+    },
+    {
+      title: "Measurement of Triaxial Magnetocardiography Using High Sensitivity Tunnel Magnetoresistance Sensor",
+      date: "2020-05-19",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2020/journal papers_0519/111.html"
+    },
+    {
+      title: "Novel Array Eddy Current Sensor With Three-Phase Excitation",
+      date: "2020-05-19",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2020/journal papers_0519/110.html"
+    },
+    {
+      title: "Synthetic Magnetic Field Imaging with Triangle Excitation Coil for Inspection of Any Orientation Defect",
+      date: "2019-04-10",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2019/journal papers_0410/83.html"
+    },
+    {
+      title: "High-density Large-scale TMR Sensor Array for Magnetic Field Imaging",
+      date: "2019-04-10",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2019/journal papers_0410/84.html"
+    },{
+      title: "A decay time approach for linear measurement of electrical conductivity",
+      date: "2019-04-10",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2019/journal papers_0410/85.html"
+    },
+    {
+      title: "Using Magnetoresistive Sensors in Nondestructive Testing",
+      date: "2019-04-10",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2019/journal papers_0410/86.html"
+    },
+    {
+      title: "Low sidelobe level and high time resolution for metallic ultrasonic testing with linear-chirp-Golay coded excitation",
+      date: "2018-06-08",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2018/journal papers_0608/24.html"
+    },
+    {
+      title: "Dual frequency fusion for defect signal enhancement in EC-GMR inspecton of riveted multilayer structures",
+      date: "2018-06-08",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2018/journal papers_0608/25.html"
+    },
+    {
+      title: "Magnetoresistive Sensor with Magnetic Balance Measurement for Inspection of Defects under Magnetically Permeable Fasteners",
+      date: "2018-06-08",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2018/journal papers_0608/26.html"
+    },
+    {
+      title: "Novel Rotating Current Probe with GMR Array Sensors for Steam Generate Tube Inspection",
+      date: "2018-06-08",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2018/journal papers_0608/27.html"
+    },
+    {
+      title: "Novel Transceiver Rotating Field Nondestructive Inspection Probe",
+      date: "2018-06-08",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2018/journal papers_0608/28.html"
+    },
+    {
+      title: "Differential Sensor Measurement with Rotating Current Excitation for Evaluating Multilayer Structures",
+      date: "2018-06-08",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2018/journal papers_0608/29.html"
+    },
+    {
+      title: "Optimization and Validation of Rotating Current Excitation with GMR Array Sensors for Riveted Structures Inspection",
+      date: "2018-06-08",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2018/journal papers_0608/30.html"
+    },
+    {
+      title: "Research of a digital circuit system frequency characteristics analyzer",
+      date: "2018-06-08",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2018/journal papers_0608/31.html"
+    },
+    {
+      title: "Research of Self-regulation Power Factor Measure Apparatus Based on MSP430F149",
+      date: "2018-06-08",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2018/journal papers_0608/32.html"
+    },
+    {
+      title: "Design of high-speed and high-capacity embedded data store system based on SATA connection",
+      date: "2018-06-08",
+      cat: "Journal Papers",
+      link: "http://10.15.21.149/html/2018/journal papers_0608/33.html"
+    },
+
+
+
+    // Conference Proceedings
+    // { title: "Conference paper on atomic magnetometers", date: "2024", cat: "Conference Proceedings", link: "#" },
+
+    {
+      title: "Numerical Calculation of Frequency Characteristic of Induction Coils",
+      date: "2022-02-14",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2022/conference proceedings_0214/164.html"
+    },
+    {
+      title: "Flexible PCB with Differential Array Coils for Irregular Shape Inspection",
+      date: "2021-06-07",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2021/conference proceedings_0607/135.html"
+    },
+    {
+      title: "Inspection of the undulation structure with an in-plane differential flexible array probe",
+      date: "2021-06-07",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2021/conference proceedings_0607/136.html"
+    },
+    {
+      title: "Novel Array ECT Probe with Three-phase Excitation for Steam Generator Tube Inspection",
+      date: "2020-05-20",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2020/conference proceedings_0520/117.html"
+    },
+    {
+      title: "Digital Fluxgate Current Sensor Based on Second Harmonic Detection",
+      date: "2020-05-20",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2020/conference proceedings_0520/116.html"
+    },
+    {
+      title: "Quantification of Embedded Defect from Magnetic Field Image Using BP Artificial Neural Networks",
+      date: "2019-04-10",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2019/conference proceedings_0410/87.html"
+    },
+    {
+      title: "Simulation and experimental study of a novel eddy current array imaging probe",
+      date: "2019-04-10",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2019/conference proceedings_0410/88.html"
+    },
+    {
+      title: "Array Electromagnetic Probe with Three-Phase Excitation for CFRP Inspection",
+      date: "2019-04-10",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2019/conference proceedings_0410/89.html"
+    },
+    {
+      title: "EC Probe with Orthogonal Excitation Coils and TMR Sensor for CFRP Inspection",
+      date: "2018-07-04",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2018/conference proceedings_0704/39.html"
+    },
+    {
+      title: "Rotating Current EC-GMR System for Rapid Scanning of Fastener Sites",
+      date: "2018-06-26",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2018/conference proceedings_0626/69.html"
+    },
+    {
+      title: "Decay Time Method for Linearly Measurement of Material Electrical Conductivity",
+      date: "2018-06-30",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2018/conference proceedings_0630/40.html"
+    },
+    {
+      title: "Evaluation of Transceiver Rotating Field Probe for Defect Detection in Tubes",
+      date: "2018-06-26",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2018/conference proceedings_0626/70.html"
+    },
+    {
+      title: "Rotating Current Excitation with GMR array Sensor for Inspecting Riveted Structures: Optimization and Validation",
+      date: "2018-06-26",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2018/conference proceedings_0626/71.html"
+    },
+    {
+      title: "EC-MR Probe with Fine Spatial Resolution and High Sensitivity for Aircraft Structure Inspection",
+      date: "2018-06-08",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2018/conference proceedings_0608/41.html"
+    },
+    {
+      title: "Effect of Scan Velocity on Ultra-Low Frequency Eddy Current Test Measurements",
+      date: "2018-06-08",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2018/conference proceedings_0608/42.html"
+    },
+    {
+      title: "Three phase rotating field eddy current probe",
+      date: "2018-06-08",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2018/conference proceedings_0608/43.html"
+    },
+    {
+      title: "Performance Evaluation of Transceiver Rotating Field Probe for Tube Inspection",
+      date: "2018-06-08",
+      cat: "Conference Proceedings",
+      link: "http://10.15.21.149/html/2018/conference proceedings_0608/44.html"
+    },
+
+
+    // Patents
+    { title: "Electromagnetic ultrasonic thickness measuring method", date: "2018-06-08", cat: "Patents", link: "#" },
+    {
+      title: "A gas pipeline crack detecting method based on oblique electromagnetic ultrasonic guided wave",
+      date: "2018-06-08",
+      cat: "Patents",
+      link: "#"
+    },
+    {
+      title: "Rotating Field Transceiver Nondestructive Inspection Probe",
+      date: "2018-06-08",
+      cat: "Patents",
+      link: "#"
+    },
+    {
+      title: "Rotating Current Excitation with Array Magnetic Sensors Nondestructive Testing Probe For Tube Inspection",
+      date: "2018-06-08",
+      cat: "Patents",
+      link: "#"
+    }
+
   ];
 
   let currentFilteredMembers = [];
@@ -684,7 +1461,7 @@
     // 更新左侧 UI 状态
     document.querySelectorAll('#member-category-list li').forEach(li => {
       li.classList.remove('active');
-      if(li.innerText === category) li.classList.add('active');
+      if (li.innerText === category) li.classList.add('active');
     });
     document.getElementById('current-cat-label').innerText = category;
 
@@ -724,6 +1501,7 @@
       }
       renderControls(page);
     }
+
     function renderControls(currentPage) {
       const nav = document.getElementById(paginationId);
       let html = `<span class="total-count">${totalItems} 条</span>`;
@@ -745,7 +1523,7 @@
   function filterMembers(category) {
     document.querySelectorAll('#member-category-list li').forEach(li => {
       li.classList.remove('active');
-      if(li.innerText === category) li.classList.add('active');
+      if (li.innerText === category) li.classList.add('active');
     });
     document.getElementById('current-cat-label').innerText = category;
     const filtered = membersData.filter(m => m.cat === category);
@@ -755,7 +1533,7 @@
   function filterPubs(category) {
     document.querySelectorAll('#pub-category-list li').forEach(li => {
       li.classList.remove('active');
-      if(li.innerText === category) li.classList.add('active');
+      if (li.innerText === category) li.classList.add('active');
     });
     document.getElementById('current-pub-label').innerText = category;
     const filtered = publicationsData.filter(p => p.cat === category);
