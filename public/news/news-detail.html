@@ -21,22 +21,32 @@
           color: #333;
           line-height: 1.8;
       }
-      /* 返回按钮：贴近示例网页的样式 */
+      /* 优化后的返回按钮样式 */
       .back-btn {
           display: inline-block;
           margin: 10px 0 20px 0;
-          padding: 6px 12px;
-          background-color: #fff;
-          border: 1px solid #ccc;
-          border-radius: 3px;
-          color: #0066cc;
+          padding: 8px 18px;
+          background-color: #004080;
+          border: 1px solid #003366;
+          border-radius: 4px;
+          color: #ffffff;
           text-decoration: none;
           font-size: 0.95rem;
-          transition: all 0.2s;
+          font-weight: 500;
+          transition: all 0.2s ease;
+          cursor: pointer;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
       }
       .back-btn:hover {
-          background-color: #f0f7ff;
-          border-color: #0066cc;
+          background-color: #0059b3;
+          border-color: #004080;
+          color: #ffffff;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+          transform: translateY(-1px);
+      }
+      .back-btn:active {
+          transform: translateY(0);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
       }
       /* 详情容器：复刻示例网页的白色背景+内边距 */
       .detail-wrapper {
