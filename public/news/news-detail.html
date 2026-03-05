@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Detail</title>
+  <style>
+      /* 全局样式：复刻示例网页的基础风格 */
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: "Microsoft Yahei", Arial, sans-serif;
+      }
+
+      body {
+          padding: 20px;
+          max-width: 1000px;
+          margin: 0 auto;
+          background-color: #f5f5f5;
+          color: #333;
+          line-height: 1.8;
+      }
+      /* 返回按钮：贴近示例网页的样式 */
+      .back-btn {
+          display: inline-block;
+          margin: 10px 0 20px 0;
+          padding: 6px 12px;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+          color: #0066cc;
+          text-decoration: none;
+          font-size: 0.95rem;
+          transition: all 0.2s;
+      }
+      .back-btn:hover {
+          background-color: #f0f7ff;
+          border-color: #0066cc;
+      }
+      /* 详情容器：复刻示例网页的白色背景+内边距 */
+      .detail-wrapper {
+          background-color: #fff;
+          padding: 30px 40px;
+          border: 1px solid #e6e6e6;
+          border-radius: 5px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      }
+      /* 标题样式：复刻示例网页的居中+大号字体 */
+      .detail-title {
+          font-size: 1.8rem;
+          color: #333;
+          text-align: center;
+          margin-bottom: 20px;
+          padding-bottom: 15px;
+          border-bottom: 1px solid #e6e6e6;
+      }
+
+      /* 发布时间：居中+灰色字体 */
+      .detail-date {
+          text-align: center;
+          color: #666;
+          font-size: 0.9rem;
+          margin-bottom: 30px;
+          display: block;
+      }
+      /* 图片容器：核心适配1-2张图片 */
+      .img-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 20px;
+          margin: 25px 0; /* 调整上下间距，适配正文下方排版 */
+      }
+      /* 图片样式：复刻示例网页的圆角+阴影+自适应 */
+      .detail-img {
+          width: 100%;
+          max-width: 450px; /* 两张图时各占约一半 */
+          height: auto;
+          border-radius: 5px;
+          box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+          object-fit: cover;
+      }
+      /* 正文样式：复刻示例网页的行高+间距 */
+      .detail-content {
+          font-size: 1.05rem;
+          color: #333;
+          text-align: justify;
+          margin-bottom: 20px; /* 正文底部加间距，和图片分隔开 */
+      }
+      /* 正文段落间距 */
+      .detail-content p {
+          margin-bottom: 15px;
+          font-family:times new roman,times,serif;
+      }
+      /* 允许复制所有内容 */
+      .detail-wrapper * {
+          user-select: text !important;
+          -webkit-user-select: text !important;
+          -moz-user-select: text !important;
+      }
+      /* 未找到内容提示 */
+      .not-found {
+          text-align: center;
+          padding: 50px 0;
+          color: #999;
+      }
+      /* 响应式适配：小屏幕图片全屏显示 */
+      @media (max-width: 768px) {
+          .detail-wrapper {
+              padding: 20px 15px;
+          }
+          .detail-title {
+              font-size: 1.5rem;
+              font-family:times new roman,times,serif;
+          }
+          .detail-img {
+              max-width: 100%;
+          }
+      }
+  </style>
+</head>
+<body>
+<!-- 返回按钮 -->
+<a href="javascript:void(0);" class="back-btn" onclick="goBack()">← 返回列表</a>
+
+<!-- 详情主容器 -->
+<div class="detail-wrapper" id="detailContainer">
+  <div style="text-align: center; padding: 50px 0;">
+    <span style="font-size: 1.1rem; color: #999;">Loading...</span>
+  </div>
+</div>
+
+<script>
+  // 静态数据：和列表页一致，支持1-2张图片
+  const newsDetails = [
+    {
+      id: 1,
+      title: "Yaqiong Niu and Chaofeng Ye published an article titled “In situ triaxial magnetic field compensation for the spin-exchange-relaxation-free optically pumped magnetometer” on IEEE Sensors Journal",
+      date: "2023-08-09",
+      imgUrls: [
+        "../../public/img/news/1-1.png",
+        "../../public/img/news/1-2.png"
+      ],
+      content: "Yaqiong Niu and Chaofeng Ye published an article titled “In situ triaxial magnetic field compensation for the spin-exchange-relaxation-free optically pumped magnetometer” on IEEE Sensors Journal in July, 2023." +
+        " This paper This paper proposed a novel method of compensation the magnetic field for a compact spin-exchange-relaxation-free (SERF) optically pumped magnetometer (OPM). The method employs modulation and low-frequency " +
+        "sweeping magnetic fields along the two directions that perpendicular to the laser beam simultaneously, and then the output signal of the photodiode is demodulated at different frequencies. The proposed method can monitor" +
+        " the magnetic fields of the three axes simultaneously and does not require iterate during the process, which increases the speed of magnetic field compensation. The feasibility of the proposed method is demonstrated experimentally." +
+        " The experiment results show that the magnetic field compensation resolutions of the x-axis, y-axis and z-axis are 0.6 pT, 0.6 pT and 5 pT, respectively." +
+        " The noise density of the compact OPM is about 20fT/Hz(1/2). The proposed method can be widely used in miniaturized OPMs."
+    },
+    {
+      id: 2,
+      title: "Haoran Dong, Pan Qi, Jie Han, Na Zhang, Cai Long, Shusheng Liao and Chaofeng Ye published an article titled “High-resolution Magnetic Imaging Probe with Staggered Sensor Arrays for Small Defects Inspection” on IEEE Sensors Journal",
+      date: "2023-07-11",
+      imgUrls: [
+        "../../public/img/news/2-1.png"
+      ],
+      content: "Haoran Dong, Pan Qi, Jie Han, Na Zhang, Cai Long, Shusheng Liao and Chaofeng Ye published an article titled “High-resolution Magnetic Imaging Probe with Staggered Sensor Arrays for Small Defects Inspection” on IEEE Sensors Journal in July, 2023." +
+        " This paper presents a novel high-resolution magnetic field imaging probe with two rows of tunneling magnetoresistance (TMR) array sensors. The sensors are integrated on a printed circuit board by golden wire bonding technology. " +
+        "The probe outputs absolute and differential signals simultaneously. The distance between the centers of each two adjacent sensors in one row is 0.5 mm resulting in high spatial resolution magnetic field images. " +
+        "The two rows of sensors are placed with 0.25 mm offset and the differential outputs of the sensors are merged to further increase the image pixel pitch to 0.25 mm. " +
+        "The operating principle of the probe is studied based on a three-dimensional finite element method (FEM) model, and the feasibility of detection small defects using the probe is tested experimentally. " +
+        "The experimental results show that a small defect with dimensions 1 mm (length)x0.1 mm (width)x0.1 mm (depth) can be detected by the probe. " +
+        "In addition, an image processing algorithm that employs the Gray-level Co-occurrence Matrix (GLCM) method is developed to reduce the noise in the image," +
+        " which retains the large connection area of the texture features to extract the indications of defects." +
+        " It is found that the probe has outstanding detection ability for small defects compared with current ECT array probes.",
+    },
+    {
+      id: 3,
+      title: "Na Zhang, Haoran Dong and Chaofeng Ye published an article titled “Synchronous Imaging and Multimodal Fusion of Optical and Electromagnetic Measurements for Overlapping Defects Inspection” on IEEE Transactions on Industrial informatics",
+      date: "2023-07-11",
+      imgUrls: [
+        "../../public/img/news/3-1.png",
+        "../../public/img/news/3-2.png"
+      ],
+      content: "Na Zhang, Haoran Dong and Chaofeng Ye published an article titled “Synchronous Imaging and Multimodal Fusion of Optical and Electromagnetic Measurements for Overlapping Defects Inspection” on IEEE Transactions on Industrial " +
+        "informatics in June, 2023. This paper proposes a system that can obtain optical and electromagnetic signals synchronously. It contains an industrial camera, a chromatic confocal displacement sensor (CCDS) and an eddy current testing (ECT)" +
+        " probe with high-resolution array tunneling magnetoresistance (TMR) sensors. A multimodal fusion algorithm is proposed to combine the advantages of the optical testing and ECT. The fusion of the visual image and CCDS measurement results" +
+        " in morphology of the surface defects. To recognize the overlapping buried defect, a finite element method model is developed to estimate the surface defect signal using parameters from the optical measurements, and then the surface " +
+        "defect signal is subtracted from the experimental image, based on which the overlapping defects are precisely detected. " +
+        "This method can be widely used in industry to comprehensively assess the health and integrity of structures.",
+    }
+  ];
+
+  // 返回列表功能
+  function goBack() {
+    window.history.back();
+    // 备选：window.location.href = "index.html";
+  }
+
+  // 解析URL参数
+  function getUrlParam(paramName) {
+    const searchParams = new URLSearchParams(window.location.search);
+    return searchParams.get(paramName);
+  }
+
+  // 渲染详情（核心：动态生成1-2张图片）
+  window.onload = function() {
+    const pubId = getUrlParam('id');
+    const container = document.getElementById('detailContainer');
+    const targetPub = newsDetails.find(pub => pub.id === Number(pubId));
+
+    if (targetPub) {
+      // 1. 处理正文：将换行符转为<p>标签（更贴近示例网页的段落排版）
+      const contentParagraphs = targetPub.content
+        .split(/\n\n+/) // 按空行分割成段落
+        .filter(para => para.trim() !== "") // 过滤空段落
+        .map(para => `<p>${para.replace(/\n/g, '')}</p>`) // 移除行内换行，包裹<p>
+        .join('');
+
+      // 2. 生成图片HTML（支持1-2张）
+      let imgHtml = '../../';
+      if (targetPub.imgUrls && targetPub.imgUrls.length > 0) {
+        imgHtml = '<div class="img-container">';
+        targetPub.imgUrls.forEach((imgUrl, index) => {
+          imgHtml += `<img src="${imgUrl}" alt="Article Image ${index+1}" class="detail-img">`;
+        });
+        imgHtml += '</div>';
+      }
+
+      // 3. 拼接完整HTML
+      container.innerHTML = `
+                    <h1 class="detail-title">${targetPub.title}</h1>
+                    <span class="detail-date">Release Time: ${targetPub.date}</span>
+                    ${imgHtml} <!-- 动态插入图片（1-2张） -->
+                    <div class="detail-content">${contentParagraphs}</div>
+                `;
+    } else {
+      container.innerHTML = `
+                    <div class="not-found">
+                        <h3>News Not Found</h3>
+                        <p>Please return to the list and try again.</p>
+                    </div>
+                `;
+    }
+  };
+</script>
+</body>
+</html>
