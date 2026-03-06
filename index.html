@@ -869,7 +869,7 @@
       name: 'Jingqi Jiao（焦靖淇）',
       desc: '2024/9-present',
       cat: 'PhD Students',
-      img: ''
+      img: 'public/img/graduate/phd-jiao.jpg'
     },
     {
       name: 'Zhiyuan Zhou（周致远）',
@@ -899,7 +899,7 @@
       name: 'Jinjie Liu（刘尽捷）',
       desc: 'class of 2024',
       cat: 'Graduate Students',
-      img: ''
+      img: 'public/img/graduate/gra-liu.jpg'
     },
     {
       name: 'Yicen Ye（叶羿岑）',
@@ -915,7 +915,7 @@
       name: 'Nengxi Cui（崔能西）',
       desc: 'class of 2025',
       cat: 'Graduate Students',
-      img: ''
+      img: 'public/img/graduate/gra-cui.jpg'
     },
     {
       name: 'Yutong Wei（魏雨童）',
@@ -1034,7 +1034,7 @@
       name: 'Chenzhi Zhang（张宸治）',
       desc: 'class of 2022',
       cat: 'Undergraduate Students',
-      img: ''
+      img: 'public/img/undergraduate/ugs-z.jpg'
     }
   ];
 
@@ -1617,8 +1617,11 @@
         // Publications 统一的简练列表样式
         container.innerHTML = pagedData.map(item => `
             <a href="javascript:;" onclick="pubDetail" class="pub-item">
-                <span class="pub-title"><p>${item.title}</p><p>${item.chTitle}</p></span>
-                <span class="pub-date">${item.date}</span>
+            <span class="pub-title">
+                <p>${item.title}</p>
+                 ${item.chTitle && item.chTitle.trim() ? `<p>${item.chTitle}</p>` : ''}
+            </span>
+            <span class="pub-date">${item.date}</span>
             </a>
         `).join('');
       }
