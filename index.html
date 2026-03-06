@@ -884,7 +884,7 @@
       name: 'Yicen Ye（叶羿岑）',
       desc: 'class of 2025',
       cat: 'Graduate Students',
-      img: ''
+      img: 'public/img/graduate/gra-ye.jpg'
     },{
       name: 'Yijie Song（宋奕洁）',
       desc: 'class of 2025',
@@ -1522,31 +1522,26 @@
       // link: 'http://10.15.21.149/html/2022/conference proceedings_0214/164.html'
     },   {
       title: '[21] Yang Wang, Chaofeng Ye*, Yu Tao, Meiling Wang, “Quantification of Embedded Defect from Magnetic Field Image Using BP Artificial Neural Networks”. 23rd International Workshop on Electromagnetic Nondestructive Evaluation, Detroit, Michigan, USA, September 9-13, 2018.',
-      date: '2019',
+      date: '2018',
       cat: 'Conference Proceedings'
       // link: 'http://10.15.21.149/html/2022/conference proceedings_0214/164.html'
     },
 
     // Patents
-    { title: 'Electromagnetic ultrasonic thickness measuring method', date: '2018-06-08', cat: 'Patents', link: '#' },
-    {
-      title: 'A gas pipeline crack detecting method based on oblique electromagnetic ultrasonic guided wave',
-      date: '2018-06-08',
-      cat: 'Patents',
-      link: '#'
-    },
-    {
-      title: 'Rotating Field Transceiver Nondestructive Inspection Probe',
-      date: '2018-06-08',
-      cat: 'Patents',
-      link: '#'
-    },
-    {
-      title: 'Rotating Current Excitation with Array Magnetic Sensors Nondestructive Testing Probe For Tube Inspection',
-      date: '2018-06-08',
-      cat: 'Patents',
-      link: '#'
-    }
+    { title: 'A micro-nano multilayer stacked coil and its preparation method and semiconductor device', chTitle: '一种微纳量级多层堆叠线圈及其制备方法与半导体器件', date: '2025-07-07', cat: 'Patents', link: '#' },
+    { title: 'Three-axis magnetic field zero-setting method, system, terminal and medium for single-beam optical pump atomic magnetometer',chTitle:'单光束光泵原子磁力仪三轴磁场调零方法、系统、终端及介质', date: '2023-04-12', cat: 'Patents', link: '#' },
+    { title: 'The invention relates to a fuel rod oxide film thickness measuring system and method',chTitle:'燃料棒氧化膜厚度测量系统及方法', date: '\n' +
+        '2022-12-07', cat: 'Patents', link: '#' },
+    { title: 'A laser source control method and system for miniaturized atomic magnetometer',chTitle:'小型化原子磁力仪激光源控制方法与系统', date: '\n' +
+        '2022-10-20', cat: 'Patents', link: '#' },
+    { title: 'The present invention relates to method and system for measuring weak magnetic field of zero-field optical pump atomic magnetometer',chTitle:'零场光泵原子磁力仪弱磁场测量方法与系统', date: '\n' +
+        '2021-11-22', cat: 'Patents', link: '#' },
+    { title: 'The present invention relates to method for compensating ripple current of sampling resistor of fluxgate current sensor',chTitle:'磁通门电流传感器采样电阻纹波电流补偿方法', date: '\n' +
+        '2021-04-20', cat: 'Patents', link: '#' },
+    { title: 'he invention discloses a fluxgate high-current sensor based on digital second harmonic detection and ripple compensation',chTitle:'基于数字二次谐波检波和纹波补偿的磁通门大电流传感器', date: '\n' +
+        '2019-10-31', cat: 'Patents', link: '#' },
+    { title: 'Multi-layer metal structure rapid detection method and device, equipment and storage medium thereof',chTitle:'多层金属结构快速检测方法及其装置、设备和存储介质', date: '\n' +
+        '2019-02-01', cat: 'Patents', link: '#' },
   ];
 
   let currentFilteredMembers = [];
@@ -1597,20 +1592,11 @@
       </a>
     `;
         }).join('');
-        // pagedData.forEach(item => {
-        //   const detailUrl = `public/news/news-detail.html?title=${item.title}`;
-        //   container.innerHTML += `
-        //         <a href="${detailUrl}" class="news-item">
-        //             <span class="news-title">${item.title}</span>
-        //             <span class="news-date">${item.date}</span>
-        //         </a>
-        //     `;
-        // });
       } else {
         // Publications 统一的简练列表样式
         container.innerHTML = pagedData.map(item => `
             <a href="javascript:;" onclick="pubDetail" class="pub-item">
-                <span class="pub-title">${item.title}</span>
+                <span class="pub-title"><p>${item.title}</p><p>${item.chTitle}</p></span>
                 <span class="pub-date">${item.date}</span>
             </a>
         `).join('');
