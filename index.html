@@ -550,12 +550,33 @@
       .pub-detail-link:hover {
           background-color: #004080;
       }
+
+      .logo-container {
+          border-bottom: 1px solid rgba(0,0,0,0.05); /* 添加一条细分割线 */
+          margin-bottom: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+
+      .logo-container img {
+          filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); /* 给 Logo 加一点点投影，显得更立体 */
+          transition: transform 0.3s ease;
+      }
+
+      .logo-container img:hover {
+          transform: scale(1.02); /* 鼠标悬停时轻微放大 */
+      }
+
   </style>
 </head>
 <body>
 
 <aside>
   <div class="sidebar-header">
+    <div class="logo-container" style="padding: 0 0 10px; ">
+      <img src="public/img/lab/img.png" alt="Lab Logo" style="max-width: 100%; border-radius: 4px; height: auto;">
+    </div>
     <h2>PSIT Lab</h2>
     <p>ShanghaiTech University</p>
   </div>
